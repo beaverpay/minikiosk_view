@@ -2,10 +2,15 @@ import { createWebHistory, createRouter } from 'vue-router';
 import Home from '../components/Home.vue';
 import NotFound from '../components/NotFound.vue';
 import Admin from '../components/Admin.vue';
+import Manager from '../components/Manager.vue';
 const routes = [
 	{
 		path: '/',
 		component: Home,
+	},
+	{
+		path: '/manager',
+		component: Manager,
 	},
 	{
 		path: '/admin',
@@ -22,4 +27,4 @@ const router = createRouter({
 	routes,
 });
 
-export { router };
+export default router;
