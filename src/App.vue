@@ -1,9 +1,18 @@
 <template>
 	<div id="app">
-		<form>
+		<!-- 간단한 로그인 로그아웃 기능 -->
+		<form v-if="$store.state.token ? false : true">
 			<input type="text" v-model="userStoreId" placeholder="매장ID" />
 			<input type="password" v-model="userPassword" placeholder="비밀번호" />
-			<input @click="login" type="button" class="btn btn-primary" value="로그인" />
+			<input
+				@click="$store.dispatch('login', { userStoreId: this.userStoreId, userPassword: this.userPassword })"
+				type="button"
+				class="btn btn-primary"
+				value="로그인"
+			/>
+		</form>
+		<form v-else>
+			<input @click="$store.dispatch('logout')" type="button" class="btn btn-primary" value="로그아웃" />
 		</form>
 		<router-view></router-view>
 	</div>
@@ -11,7 +20,7 @@
 
 <script>
 export default {
-	name: 'OrderList',
+	name: 'App',
 	data() {
 		return {
 			userStoreId: '',
@@ -35,29 +44,6 @@ export default {
 					console.log(error);
 				});
 		},
-		login() {
-			this.axios
-				.post(
-					'http://ec2-3-36-49-133.ap-northeast-2.compute.amazonaws.com/auth',
-					JSON.stringify({
-						user_store_id: Number(this.userStoreId),
-						user_password: this.userPassword,
-					}),
-					{
-						headers: {
-							'Content-Type': `application/json`,
-						},
-					},
-				)
-				.then((response) => {
-					console.log(response);
-					console.log(response.data.data.accessToken);
-					console.log(response.status);
-				})
-				.catch((error) => {
-					console.log(error);
-				});
-		},
 	},
 	components: {},
 };
@@ -70,6 +56,5 @@ export default {
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
 	color: #2c3e50;
-	margin-top: 60px;
 }
 </style>
