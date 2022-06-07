@@ -15,10 +15,12 @@
 			<input @click="$store.dispatch('logout')" type="button" class="btn btn-primary" value="로그아웃" />
 		</form>
 		<router-view></router-view>
+		<Menu></Menu>
 	</div>
 </template>
 
 <script>
+import Menu from './components/Menu.vue'
 export default {
 	name: 'App',
 	data() {
@@ -45,7 +47,7 @@ export default {
 				});
 		},
 	},
-	components: {},
+	components: {Menu},
 };
 </script>
 
