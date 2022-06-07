@@ -44,7 +44,6 @@ export default {
 
 .white-background{
     background-color: white;
-    margin-top: 20%;
     padding: 20px;
     margin-left: 10%;
     margin-right: 10%;
