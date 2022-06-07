@@ -7,8 +7,13 @@ const store = createStore({
 	state() {
 		return {
 			token: '',
-			storeId: '',
-			showModal: 'false'
+			storeId: 0,
+			stock: 0,
+			menuId: '',
+			Menu: {menu_name:'',menu_price:0,menu_desc:'',menu_stock:0,menu_category:''},
+			showUpdateStockModal: false,
+			showRegistMenuModal: false,
+			showDetailMenuModal: false
 		};
 	},
 	mutations: {
@@ -18,9 +23,21 @@ const store = createStore({
 		storeId(state, storeId){
 			state.storeId = storeId;
 		},
-		toggleModal(state){
-			state.showModal = !state.showModal;
-		}
+		changeStock(state, stock){
+			state.stock = stock;
+		},
+		storeMenuId(state, menuId){
+			state.menuId = menuId;
+		},
+		toggleUpdateStockModal(state){
+			state.showUpdateStockModal = !state.showUpdateStockModal;
+		},
+		toggleRegistMenuModal(state){
+			state.showRegistMenuModal = !state.showRegistMenuModal;
+		},
+		toggleDetailMenuModal(state){
+			state.showDetailMenuModal = !state.showDetailMenuModal;
+		},
 	},
 	actions: {
 		login(context, user) {
@@ -48,8 +65,9 @@ const store = createStore({
 		},
 		logout(context) {
 			context.commit('storeToken', '');
+			context.commit('storeId', 0);
 			router.push('/');
-		},
+		}
 	},
 	plugins: [createPersistedState()],
 });
