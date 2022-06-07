@@ -14,6 +14,9 @@ const store = createStore({
 		storeToken(state, token) {
 			state.token = token;
 		},
+		storeId(state, storeId){
+			state.storeId = storeId;
+		}
 	},
 	actions: {
 		login(context, user) {
@@ -32,7 +35,8 @@ const store = createStore({
 				)
 				.then((response) => {
 					context.commit('storeToken', response.data.data.accessToken);
-					router.push('/admin');
+					context.commit('storeId', response.data.data.storeId)
+					response.data.data.storeId === 1 ? router.push('/admin') : router.push('/manager')
 				})
 				.catch((error) => {
 					console.log(error);
