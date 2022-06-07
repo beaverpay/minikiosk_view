@@ -42,6 +42,7 @@ export default {
                 }).then(res => {
                     console.log('주문 성공 로그');
                     console.log(res);
+                    //저장 후 성공 시 원래 매장 번호 들고 스토어 화면으로 이동
                     this.$router.push({
                         name: "store",
                         query: {id: this.$route.query.id}

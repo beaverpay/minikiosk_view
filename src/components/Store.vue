@@ -53,9 +53,9 @@ export default {
         },
 */
         /** 
-         * @desc write Menu,
-         * @param menu_store_id
-         * @param menu_id 
+         * @desc 주문 페이지 이동
+         * @param menu_store_id : 매장 번호
+         * @param menu_id : 클릭한 메뉴 번호
         */  
         writeContent(menu_store_id,menu_id){
             this.$router.push({
