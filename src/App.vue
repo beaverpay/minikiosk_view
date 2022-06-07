@@ -1,6 +1,7 @@
 <template>
 	<div id="app">
 		<!-- 간단한 로그인 로그아웃 기능 -->
+		<Modal v-if="$store.state.showModal"></Modal>
 		<form v-if="$store.state.token ? false : true">
 			<input type="text" v-model="userStoreId" placeholder="매장ID" />
 			<input type="password" v-model="userPassword" placeholder="비밀번호" />
@@ -12,13 +13,17 @@
 			/>
 		</form>
 		<form v-else>
-			<input @click="$store.dispatch('logout')" type="button" class="btn btn-primary" value="로그아웃" />
+			<div class="row p-0 m-0">
+				<p class="col-6">storeId : {{$store.state.storeId}}</p>
+				<input @click="$store.dispatch('logout')" type="button" class="btn btn-primary col-6" value="로그아웃" />
+			</div>
 		</form>
 		<router-view></router-view>
 	</div>
 </template>
 
 <script>
+import Modal from './modals/Modal.vue'
 export default {
 	name: 'App',
 	data() {
@@ -45,7 +50,7 @@ export default {
 				});
 		},
 	},
-	components: {},
+	components: {Modal},
 };
 </script>
 

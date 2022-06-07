@@ -7,7 +7,8 @@ const store = createStore({
 	state() {
 		return {
 			token: '',
-			storeId: '2',
+			storeId: '',
+			showModal: 'false'
 		};
 	},
 	mutations: {
@@ -16,6 +17,9 @@ const store = createStore({
 		},
 		storeId(state, storeId){
 			state.storeId = storeId;
+		},
+		toggleModal(state){
+			state.showModal = !state.showModal;
 		}
 	},
 	actions: {
