@@ -30,15 +30,16 @@ export default {
 		};
 	},
 	mounted() {
-		this.getDetailMenu();
+		this.getDetailMenu(this.$store.state.menuId);
 	},
 	props: {},
 	methods: {
 		getDetailMenu(menuId) {
+			console.log(this.$store.state.menuId);
 			axios
 				.get(`http://ec2-3-36-49-133.ap-northeast-2.compute.amazonaws.com/menu/details/${menuId}`)
 				.then((response) => {
-					console.log(response);
+					this.menu = response.data.data[0];
 				})
 				.catch((error) => {
 					console.log(error);
