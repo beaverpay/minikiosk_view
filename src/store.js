@@ -2,7 +2,7 @@ import { createStore } from 'vuex';
 import axios from 'axios';
 import router from './assets/router';
 import createPersistedState from 'vuex-persistedstate';
-
+//테스트
 const store = createStore({
 	state() {
 		return {
