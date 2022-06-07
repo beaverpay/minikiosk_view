@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <!-- <div>
       <b-navbar toggleable="lg" type="dark" variant="info">
         <b-navbar-brand href="/">홈</b-navbar-brand>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -12,7 +12,7 @@
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
-    </div>
+    </div> -->
 </template>
 <script>
 export default {
