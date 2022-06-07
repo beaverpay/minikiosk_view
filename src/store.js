@@ -10,33 +10,42 @@ const store = createStore({
 			storeId: 0,
 			stock: 0,
 			menuId: '',
-			Menu: {menu_name:'',menu_price:0,menu_desc:'',menu_stock:0,menu_category:''},
+			Menu: { menu_name: '', menu_price: 0, menu_desc: '', menu_stock: 0, menu_category: '' },
+			Manager: { user_store_id: 0, user_password: '' },
 			showUpdateStockModal: false,
 			showRegistMenuModal: false,
-			showDetailMenuModal: false
+			showDetailMenuModal: false,
+			showRegistManagerModal: false,
+			showRegistStoreModal: false,
 		};
 	},
 	mutations: {
 		storeToken(state, token) {
 			state.token = token;
 		},
-		storeId(state, storeId){
+		storeId(state, storeId) {
 			state.storeId = storeId;
 		},
-		changeStock(state, stock){
+		changeStock(state, stock) {
 			state.stock = stock;
 		},
-		storeMenuId(state, menuId){
+		storeMenuId(state, menuId) {
 			state.menuId = menuId;
 		},
-		toggleUpdateStockModal(state){
+		toggleUpdateStockModal(state) {
 			state.showUpdateStockModal = !state.showUpdateStockModal;
 		},
-		toggleRegistMenuModal(state){
+		toggleRegistMenuModal(state) {
 			state.showRegistMenuModal = !state.showRegistMenuModal;
 		},
-		toggleDetailMenuModal(state){
+		toggleDetailMenuModal(state) {
 			state.showDetailMenuModal = !state.showDetailMenuModal;
+		},
+		toggleRegistManagerModal(state) {
+			state.showRegistManagerModal = !state.showRegistManagerModal;
+		},
+		toggleRegistStoreModal(state) {
+			state.showRegistStoreModal = !state.showRegistStoreModal;
 		},
 	},
 	actions: {
@@ -56,8 +65,8 @@ const store = createStore({
 				)
 				.then((response) => {
 					context.commit('storeToken', response.data.data.accessToken);
-					context.commit('storeId', response.data.data.storeId)
-					response.data.data.storeId === 1 ? router.push('/admin') : router.push('/manager')
+					context.commit('storeId', response.data.data.storeId);
+					response.data.data.storeId === 1 ? router.push('/admin') : router.push('/manager');
 				})
 				.catch((error) => {
 					console.log(error);
@@ -67,7 +76,7 @@ const store = createStore({
 			context.commit('storeToken', '');
 			context.commit('storeId', 0);
 			router.push('/');
-		}
+		},
 	},
 	plugins: [createPersistedState()],
 });
