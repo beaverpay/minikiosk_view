@@ -3,35 +3,45 @@
 	<registMenuModal v-if="$store.state.showRegistMenuModal"></registMenuModal>
 	<detailMenuModal v-if="$store.state.showDetailMenuModal"></detailMenuModal>
 	<div class="row p-0 m-0">
-		<h1>메뉴관리</h1>
-		<button class="btn btn-success w-100" @click="$store.commit('toggleRegistMenuModal')">추가</button>
-		<ul>
-			<li v-for="(menu, index) in menuList" :key="index" class="row">
-				<div
-					class="col-4"
-					@click="
-						$store.commit('toggleDetailMenuModal');
-						$store.commit('storeMenuId', menu.id);
-					"
-				>
-					{{ menu.menu_name }}
-				</div>
-				<div class="col-1"><button class="btn btn-danger" @click="subStock(menu)">-</button></div>
-				<div
-					class="col-1"
-					@click="
-						$store.commit('toggleUpdateStockModal');
-						$store.commit('changeStock', menu.menu_stock);
-						$store.commit('storeMenuId', menu.id);
-					"
-				>
-					{{ menu.menu_stock }}
-				</div>
-				<div class="col-1"><button class="btn btn-primary" @click="addStock(menu)">+</button></div>
-				<div class="col-3">{{ menu.menu_price }}원</div>
-				<div class="col-2"><button class="btn btn-danger" @click="deleteMenu(menu)">삭제</button></div>
-			</li>
-		</ul>
+		<h1 class="col-12">storeId : {{$store.state.storeId}}</h1>
+		<div class="col-6">
+			<h1 class="col-12">메뉴관리</h1>
+			<div class="col-12">
+			<button class="btn btn-success w-100" @click="$store.commit('toggleRegistMenuModal')">추가</button>
+			<ul>
+				<li v-for="(menu, index) in menuList" :key="index" class="row">
+					<div
+						class="col-4"
+						@click="
+							$store.commit('toggleDetailMenuModal');
+							$store.commit('storeMenuId', menu.id);
+						"
+					>
+						{{ menu.menu_name }}
+					</div>
+					<div class="col-1"><button class="btn btn-danger" @click="subStock(menu)">-</button></div>
+					<div
+						class="col-1"
+						@click="
+							$store.commit('toggleUpdateStockModal');
+							$store.commit('changeStock', menu.menu_stock);
+							$store.commit('storeMenuId', menu.id);
+						"
+					>
+						{{ menu.menu_stock }}
+					</div>
+					<div class="col-1"><button class="btn btn-primary" @click="addStock(menu)">+</button></div>
+					<div class="col-3">{{ menu.menu_price }}원</div>
+					<div class="col-2"><button class="btn btn-danger" @click="deleteMenu(menu)">삭제</button></div>
+				</li>
+			</ul>
+		</div>
+		</div>
+		<div class="col-6">
+			<h1 class="col-12">주문관리</h1>
+		</div>
+		
+		
 	</div>
 </template>
 
@@ -46,14 +56,20 @@ export default {
 	data() {
 		return {
 			menuList: [],
+			orderList: []
 		};
 	},
 	mounted() {
 		this.getStoreMenu();
 	},
-	updated() {
-		this.getStoreMenu();
-	},
+	watch: {
+		menuList : function(){
+			this.getStoreMenu();
+		},
+		orderList : function(){
+			this.getOrderList();
+		}
+	},	
 	methods: {
 		getStoreMenu() {
 			axios
@@ -112,6 +128,9 @@ export default {
 					console.log(error);
 				});
 		},
+		getOrderList(){
+			axios.get().then().catch()
+		}
 	},
 	components: { updateStockModal, registMenuModal, detailMenuModal },
 };

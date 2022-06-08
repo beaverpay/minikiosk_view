@@ -6,11 +6,16 @@ import Admin from '../components/Admin.vue';
 import Manager from '../components/Manager.vue';
 import Store from '../components/Store.vue';
 import StoreEdit from '../components/StoreEdit.vue';
+import Login from '../components/Login.vue';
 
 const routes = [
 	{
 		path: '/',
 		component: Menu,
+	},
+	{
+		path: '/login',
+		component: Login,
 	},
 	{
 		path: '/manager',

@@ -12,6 +12,7 @@ const store = createStore({
 			menuId: '',
 			Menu: { menu_name: '', menu_price: 0, menu_desc: '', menu_stock: 0, menu_category: '' },
 			Manager: { user_store_id: 0, user_password: '' },
+			Store: {store_id:null, store_name:'',store_branch:'',store_tel:''},
 			showUpdateStockModal: false,
 			showRegistMenuModal: false,
 			showDetailMenuModal: false,

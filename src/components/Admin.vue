@@ -18,7 +18,17 @@
 		<div class="col-6">
 			<h1>매장관리</h1>
 			<button class="btn btn-success w-75" @click="$store.commit('toggleRegistStoreModal')">추가</button>
-			<ul></ul>
+			<ul>
+				<li v-for="(store,index) in storeList" :key="index" class="row">
+					<div class="col-1">{{store.store_id}}</div>
+					<div class="col-2">{{store.store_name}}</div>
+					<div class="col-2">{{store.store_branch}}</div>
+					<div class="col-4">{{store.store_tel}}</div>
+					<div class="col-3">
+						<button class="btn btn-danger" @click="deleteStore(store.store_id)">삭제</button>
+					</div>
+				</li>
+			</ul>
 		</div>
 	</div>
 </template>
@@ -31,13 +41,21 @@ export default {
 	data() {
 		return {
 			managerList: [],
+			storeList:[]
 		};
 	},
 	mounted() {
 		this.getManagerList();
+		this.getStoreList();
 	},
-	updated() {
-		this.getManagerList();
+
+	watch:{
+		managerList : function(){
+			this.getManagerList();
+		},
+		storeList : function(){
+			this.getStoreList();
+		}
 	},
 	methods: {
 		getManagerList() {
@@ -69,6 +87,28 @@ export default {
 					console.log(error);
 				});
 		},
+		getStoreList(){
+			axios.get('http://ec2-3-36-49-133.ap-northeast-2.compute.amazonaws.com/store', {
+					headers: {
+						Authorization: this.$store.state.token,
+						'Content-Type': `application/json`,
+					},
+				}).then((response)=>{this.storeList = response.data.data;}).catch((error)=>{console.log(error);})
+		},
+		deleteStore(storeId){
+			axios
+				.delete(`http://ec2-3-36-49-133.ap-northeast-2.compute.amazonaws.com/store/${storeId}`, {
+					headers: {
+						Authorization: this.$store.state.token,
+					},
+				})
+				.then((response) => {
+					console.log(response);
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		}
 	},
 	components: { registManagerModal, registStoreModal },
 };

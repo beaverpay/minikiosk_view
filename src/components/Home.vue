@@ -10,7 +10,7 @@ export default {
 		return{}
 	},
 	components: {
-		Menu	
+		Menu,	
 	}
 	// updated(){
 	// 	this.$state.commit('storeToken','');
