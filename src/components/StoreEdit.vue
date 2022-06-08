@@ -40,6 +40,7 @@ export default {
                     //수량 
                     order_amount: this.order_amount
                 }).then(res => {
+                    window.alert("주문이 완료되었습니다.")
                     console.log('주문 성공 로그');
                     console.log(res);
                     //저장 후 성공 시 원래 매장 번호 들고 스토어 화면으로 이동
@@ -48,6 +49,7 @@ export default {
                         query: {id: this.$route.query.id}
                     });
                 }).catch(function(error){
+                    window.alert("재고가 부족합니다.")
                     console.log('주문 실패 로그');
                     console.log(error);
                 });

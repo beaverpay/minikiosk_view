@@ -1,5 +1,4 @@
 <template>
-	<h1>홈입니다.</h1>
 	<Menu/>
 </template>
 
@@ -11,7 +10,7 @@ export default {
 		return{}
 	},
 	components: {
-		Menu	
+		Menu,	
 	}
 	// updated(){
 	// 	this.$state.commit('storeToken','');
