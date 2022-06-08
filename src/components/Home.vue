@@ -1,18 +1,15 @@
-<template>
-	<h1>홈입니다.</h1>
-	<Menu/>
-</template>
+<template><Menu></Menu></template>
 
 <script>
-import Menu from '../components/Menu.vue'
+import Menu from '../components/Menu.vue';
 export default {
 	name: 'Home',
-	data(){
-		return{}
+	data() {
+		return {};
 	},
 	components: {
-		Menu	
-	}
+		Menu,
+	},
 	// updated(){
 	// 	this.$state.commit('storeToken','');
 	// }
