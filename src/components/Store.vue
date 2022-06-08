@@ -1,10 +1,9 @@
 <template>
-    <div>
-        <div align="right" style="margin:10px">
+    <div id = store>
+        <div align="right" style="margin:70px">
             <input type="email" class="form-control" id="exampleFormControlInput1" v-model= "menu_name">       
 <button type="button" class="btn btn-outline-info btn-sm" @click='nameSch()'>메뉴명 조회 </button>&nbsp;
 <button type="button" class="btn btn-outline-info btn-sm" @click='categorySch()'>카테고리 조회 </button>&nbsp;
-<!--<button type="button" class="btn btn-outline-info btn-sm" @click='writeContent(this.$route.query.id)'>주문</button>&nbsp; -->
         </div>
         <table class="table">
         <thead>
@@ -19,13 +18,12 @@
         </thead>
         <tbody>
             <tr v-for="item in contents" v-bind:key="item.id" @click='writeContent($route.query.id, item.id)'>
-                <th scope="row">{{item.id}}</th>
+                <td scope="row">{{item.id}}</td>
                 <td >{{item.menu_category}}</td>
                 <td>{{item.menu_name}}</td>
                 <td>{{item.menu_desc}}</td>
                 <td>{{item.menu_price}}</td>
                 <td>{{item.menu_stock}}</td>
-                <!-- <td>{{ formatDate(item.updatedAt)}}</td> -->
             </tr>
         </tbody>
         </table>
@@ -128,3 +126,28 @@ export default {
 
 }
 </script>
+<style>
+ 
+.table {
+  border-collapse: collapse;
+}  
+.store{
+    width: 100px;
+}
+.table th {
+  color: #168;
+  border-bottom: 3px solid rgb(20, 103, 137);
+}
+.table td {
+  color: #669;
+  border-bottom: 1px solid #ddd;
+}
+.table tr:hover td {
+  color: #004;
+  cursor: pointer;
+}
+thead{
+    background-color: rgb(189, 226, 218);
+}
+
+</style>
