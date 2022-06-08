@@ -1,5 +1,5 @@
 <template>
-    <div style ="margin:30px">
+    <div style ="margin:210px">
         <div align="right">
             <button type="button" class="btn btn-outline-info btn-sm" @click='confirmWrite()'>주문하기</button>&nbsp;
             <button type="button" class="btn btn-outline-secondary btn-sm" @click='cancelWrite()' >취소</button> 
@@ -27,9 +27,10 @@ export default {
     methods: {
         //취소버튼
         cancelWrite(){
-             this.$router.push({
-                name: "store"
-            });
+            this.$router.push({
+                name: "store",
+                query: {id: this.$route.query.id}
+                });
         },
         //데이터 저장
         confirmWrite(){
