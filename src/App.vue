@@ -18,24 +18,11 @@ export default {
 </script>
 
 <style>
-.black-background{
-    background-color: rgba(0,0,0,0.3);
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-    margin: 0px;
-}
-
-.white-background{
-    background-color: white;
-    margin-top: 100px;
-    padding: 20px;
-    margin-left: 10%;
-    margin-right: 10%;
-    border-radius: 10px;
+#app {
+	font-family: Avenir, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	color: #2c3e50;
 }
 </style>
-
