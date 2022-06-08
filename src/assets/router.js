@@ -1,5 +1,6 @@
 import { createWebHistory, createRouter } from 'vue-router';
-import Home from '../components/Home.vue';
+// import Home from '../components/Home.vue';
+import Menu from '../components/Menu.vue';
 import NotFound from '../components/NotFound.vue';
 import Admin from '../components/Admin.vue';
 import Manager from '../components/Manager.vue';
@@ -9,7 +10,7 @@ import StoreEdit from '../components/StoreEdit.vue';
 const routes = [
 	{
 		path: '/',
-		component: Home,
+		component: Menu,
 	},
 	{
 		path: '/manager',

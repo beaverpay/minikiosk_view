@@ -1,29 +1,34 @@
 <template>
 	<div id="app">
 		<!-- 간단한 로그인 로그아웃 기능 -->
-		
-		<form v-if="$store.state.token ? false : true">
-			<input type="text" v-model="userStoreId" placeholder="매장ID" />
-			<input type="password" v-model="userPassword" placeholder="비밀번호" />
-			<input
-				@click="$store.dispatch('login', { userStoreId: this.userStoreId, userPassword: this.userPassword })"
-				type="button"
-				class="btn btn-primary"
-				value="로그인"
-			/>
-		</form>
-		<form v-else>
-			<div class="row p-0 m-0">
-				<h1 class="col-6">storeId : {{$store.state.storeId}}</h1>
-				<input @click="$store.dispatch('logout')" type="button" class="btn btn-primary col-6" value="로그아웃" />
-			</div>
-		</form>
+		<div class="header">
+			<form v-if="$store.state.token ? false : true">
+				<input type="text" v-model="userStoreId" placeholder="매장ID" />
+				<input type="password" v-model="userPassword" placeholder="비밀번호" />
+				<input
+					@click="$store.dispatch('login', { userStoreId: this.userStoreId, userPassword: this.userPassword })"
+					type="button"
+					class="btn btn-primary"
+					value="로그인"
+				/>
+			</form>
+			<form v-else>
+				<div class="row p-0 m-0">
+					<h1 class="col-6">storeId : {{$store.state.storeId}}</h1>
+					<input @click="$store.dispatch('logout')" type="button" class="btn btn-primary col-6" value="로그아웃" />
+				</div>
+			</form>
+		</div>
+		<div style="height: 200px;">
+			<i class="bi bi-arrow-bar-down fs-1"></i>
+			<i class="bi bi-arrow-bar-up fs-1"></i>
+		</div>
 		<router-view></router-view>
 		
 </div>	
 </template>
 <script>
-
+import $ from 'jquery';
 export default {
 	name: 'App',
 	data() {
@@ -35,6 +40,19 @@ export default {
 	},
 	created: function () {
 		// this.getList();
+	},
+	mounted(){
+		$('.bi-arrow-bar-down').on('click',()=>{
+			$('.header').slideDown()
+			$('.bi-arrow-bar-down').css('display', 'none')
+			$('.bi-arrow-bar-up').css('display', 'block')
+		})
+
+		$('.bi-arrow-bar-up').on('click',()=>{
+			$('.header').slideUp()
+			$('.bi-arrow-bar-down').css('display', 'block')
+			$('.bi-arrow-bar-up').css('display', 'none')
+		})
 	},
 	methods: {
 		getList: function () {
@@ -83,4 +101,30 @@ export default {
     margin-right: 10%;
     border-radius: 10px;
 }
+
+.header{
+	display:none;
+}
+
+.bi{
+  display: block;
+}
+
+.bi:hover{
+	cursor: pointer;
+	animation-name: shake;
+	animation-duration: 1s;
+}
+
+.bi-arrow-bar-up{
+	display: none;
+}
+
+@keyframes shake {
+	0% { transform: rotate(0deg)}
+	25% { transform: rotate(-8deg)}
+	50% { transform: rotate(8deg)}
+	75% { transform: rotate(-8deg)}
+	100% { transform: rotate(0deg)}
+} 
 </style>
