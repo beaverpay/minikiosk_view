@@ -4,7 +4,11 @@
 		<div class="menuWrap">
 			<ul class="menu">
 				<li v-if="$store.state.token ? false : true"><a href="/login">로그인</a></li>
-				<li v-else><a href="#" @click="$store.dispatch('logout')">로그아웃</a></li>
+				<li v-else>
+					<a class="me-3" href="/admin" v-if="$store.state.storeId === 1">관리자페이지</a>
+					<a class="me-3" href="/manager" v-else>매니저페이지</a>
+					<a href="#" @click="$store.dispatch('logout')">로그아웃</a>
+				</li>
 			</ul>
 		</div>
 	</header>

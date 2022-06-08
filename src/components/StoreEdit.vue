@@ -1,12 +1,11 @@
 <template>
     <div style ="margin:210px">
-        <div align="right">
+        <div class="mb-3" >
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="수량" v-model= "order_amount">
+        </div>
+        <div>
             <button type="button" class="btn btn-outline-info btn-sm" @click='confirmWrite()'>주문하기</button>&nbsp;
             <button type="button" class="btn btn-outline-secondary btn-sm" @click='cancelWrite()' >취소</button> 
-        </div>
-        <div class="mb-3" align="left">
-            <label for="exampleFormControlInput1" class="form-label">수량</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" v-model= "order_amount">
         </div>
     </div>
 </template>

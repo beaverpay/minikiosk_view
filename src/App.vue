@@ -1,8 +1,9 @@
 <template>
-  <div id="app">
-    <Header />
-		<i class="bi bi-arrow-bar-down fs-1"></i>
-		<i class="bi bi-arrow-bar-up fs-1"></i>
+<div id="app">
+	<Header></Header>
+	<div class="mt-1"></div>
+	<i class="bi bi-arrow-bar-down fs-1 w-25 mx-auto"></i>
+	<i class="bi bi-arrow-bar-up fs-1 w-25 mx-auto"></i>
     <div id="content" class="content">
       <router-view></router-view>
     </div>
@@ -77,7 +78,7 @@ export default {
 
 .white-background{
     background-color: white;
-    margin-top: 100px;
+    margin-top: 0px;
     padding: 20px;
     margin-left: 10%;
     margin-right: 10%;

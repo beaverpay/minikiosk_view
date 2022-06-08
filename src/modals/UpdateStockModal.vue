@@ -23,30 +23,30 @@ export default {
                 headers: {
                     'Content-Type': `application/json`,
                 },
-            }).then(()=>{this.$store.commit('toggleUpdateStockModal')}).catch((error)=>{console.log(error);})
+            }).then(()=>{this.$store.commit('toggleUpdateStockModal')}).catch((error)=>{alert(error.response.data.message);})
         }
     }
 };
 </script>
 
 <style>
-
-.black-background{
-    background-color: rgba(0,0,0,0.3);
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-    margin: 0px;
+.black-background {
+	background-color: rgba(0, 0, 0, 0.3);
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+	margin: 0px;
 }
 
-.white-background{
-    background-color: white;
-    padding: 20px;
-    margin-left: 10%;
-    margin-right: 10%;
-    border-radius: 10px;
+.white-background {
+	background-color: white;
+	margin-top: 100px;
+	padding: 20px;
+	margin-left: 10%;
+	margin-right: 10%;
+	border-radius: 10px;
 }
 </style>

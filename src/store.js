@@ -9,6 +9,7 @@ const store = createStore({
 			token: '',
 			storeId: 0,
 			stock: 0,
+			price : 0,
 			menuId: '',
 			Menu: { menu_name: '', menu_price: 0, menu_desc: '', menu_stock: 0, menu_category: '' },
 			Manager: { user_store_id: 0, user_password: '' },
@@ -18,6 +19,7 @@ const store = createStore({
 			showDetailMenuModal: false,
 			showRegistManagerModal: false,
 			showRegistStoreModal: false,
+			showUpdatePriceModal: false
 		};
 	},
 	mutations: {
@@ -32,6 +34,9 @@ const store = createStore({
 		},
 		storeMenuId(state, menuId) {
 			state.menuId = menuId;
+		},
+		changePrice(state, price) {
+			state.price = price;
 		},
 		toggleUpdateStockModal(state) {
 			state.showUpdateStockModal = !state.showUpdateStockModal;
@@ -48,6 +53,9 @@ const store = createStore({
 		toggleRegistStoreModal(state) {
 			state.showRegistStoreModal = !state.showRegistStoreModal;
 		},
+		toggleUpdatePriceModal(state) {
+			state.showUpdatePriceModal = !state.showUpdatePriceModal;
+		}
 	},
 	actions: {
 		login(context, user) {
@@ -71,6 +79,7 @@ const store = createStore({
 				})
 				.catch((error) => {
 					console.log(error);
+					alert('로그인 실패');
 				});
 		},
 		logout(context) {

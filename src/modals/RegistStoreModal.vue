@@ -64,17 +64,17 @@ export default {
 .black-background {
 	background-color: rgba(0, 0, 0, 0.3);
 	position: fixed;
-	top: -20%;
+	top: 0px;
 	left: 0px;
 	width: 100%;
-	height: 150%;
+	height: 100%;
 	padding: 20px;
 	margin: 0px;
 }
 
 .white-background {
 	background-color: white;
-	margin-top: 20%;
+	margin-top: 100px;
 	padding: 20px;
 	margin-left: 10%;
 	margin-right: 10%;

@@ -2,21 +2,16 @@
 	<div id="app">
 		<!-- 간단한 로그인 로그아웃 기능 -->
 		
-		<form v-if="$store.state.token ? false : true">
-			<input type="text" v-model="userStoreId" placeholder="매장ID" />
-			<input type="password" v-model="userPassword" placeholder="비밀번호" />
+		<div v-if="$store.state.token ? false : true" class="loginForm d-flex flex-column justify-content-center">
+			<input class="w-75 mx-auto my-1" type="text" v-model="userStoreId" placeholder="매장ID" />
+			<input class="w-75 mx-auto my-1" type="password" v-model="userPassword" placeholder="비밀번호" />
 			<input
 				@click="$store.dispatch('login', { userStoreId: this.userStoreId, userPassword: this.userPassword })"
 				type="button"
-				class="btn btn-primary"
+				class="btn btn-primary w-75 mx-auto my-1"
 				value="로그인"
 			/>
-		</form>
-		<form v-else>
-			<div class="row p-0 m-0">
-				
-			</div>
-		</form>
+		</div>
 		<router-view></router-view>
 		
 </div>	
@@ -62,5 +57,15 @@ export default {
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
 	color: #2c3e50;
+}
+
+.loginForm{
+	border: 1px solid grey;
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px 5px #aaa;
+	width: 50%;
+	height: 200px;
+	margin: auto;
+	margin-top: 5%
 }
 </style>
