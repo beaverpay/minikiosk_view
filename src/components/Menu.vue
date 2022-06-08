@@ -1,15 +1,12 @@
 <template>
     <div style='margin:15%'>
-    <h1>minikiosk</h1>
-    <div style ="margin:10%">
-    <div align="left">
-        <label for="exampleFormControlInput4" class="form-label">매장 아이디를 입력하세요.</label>
-        <input type="id" class="form-control" id="exampleFormControlInput4"  v-model="menu_store_id" >
-        <div align="right">
-        <button type="button" class="btn btn-outline-info btn-sm" @click='idStore()'> 메뉴 조회 </button>&nbsp;
+        <h1>minikiosk</h1>
+        <div style ="margin:10%">
+            <div class="row">
+                <input type="id" class="form-control w-75" id="exampleFormControlInput4" placeholder="매장 아이디를 입력하세요." v-model="menu_store_id" >
+                <button type="button" class="btn btn-outline-info btn-sm w-25" @click='idStore()'> 메뉴 조회 </button>&nbsp;
+            </div>
         </div>
-        </div>
-    </div>
     </div>
 </template>
 <script>
@@ -31,5 +28,7 @@ export default {
         }
   }
 }
-
 </script>
+<style>
+
+</style>
