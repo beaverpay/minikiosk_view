@@ -1,5 +1,5 @@
 <template>
-    <div style ="margin:210px">
+    <div style ="margin:250px">
         <div align="right">
             <button type="button" class="btn btn-outline-info btn-sm" @click='confirmWrite()'>주문하기</button>&nbsp;
             <button type="button" class="btn btn-outline-secondary btn-sm" @click='cancelWrite()' >취소</button> 
